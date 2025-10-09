@@ -1,89 +1,158 @@
 'use client';
 
 import { useAuth } from "@/hooks/useAuth";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 export default function Dashboard() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
+
+  const stats = [
+    { name: 'Total Employees', value: '0', description: 'Active team members' },
+    { name: 'Active Users', value: '1', description: 'Currently active' },
+    { name: 'Drive Storage', value: '0 MB', description: 'Shared drive usage' },
+    { name: 'Pending Tasks', value: '0', description: 'Awaiting action' },
+  ];
+
+  const quickActions = [
+    {
+      title: 'Add Employee',
+      description: 'Onboard new team member',
+      href: '/dashboard/employees/add',
+      icon: '👤',
+    },
+    {
+      title: 'Manage Team',
+      description: 'View all employees',
+      href: '/dashboard/employees',
+      icon: '👥',
+    },
+    {
+      title: 'Upload Files',
+      description: 'Share documents with team',
+      href: '/dashboard/shared-drive/upload',
+      icon: '📁',
+    },
+    {
+      title: 'Browse Drive',
+      description: 'Access shared files',
+      href: '/dashboard/shared-drive',
+      icon: '🔍',
+    },
+  ];
+
+  const recentActivity = [
+    { id: 1, action: 'You signed in', time: 'Just now', type: 'authentication' },
+    { id: 2, action: 'Welcome to Brinkly Dashboard', time: '5 minutes ago', type: 'system' },
+  ];
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Dashboard
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Welcome back, {user?.name}!
-          </p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <div className="text-right">
-            <p className="text-sm font-medium text-gray-900 dark:text-white">
-              {user?.name}
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              {user?.email}
-            </p>
-          </div>
-          <img
-            className="h-10 w-10 rounded-full"
-            src={user?.image || '/default-avatar.png'}
-            alt={user?.name || 'User'}
-          />
-          <button
-            onClick={() => signOut()}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
-          >
-            Sign Out
-          </button>
-        </div>
+      {/* Welcome Section */}
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold">Welcome back, {user?.name}!</h1>
+        <p className="text-muted-foreground">
+          Here&apos;s what&apos;s happening with your team today.
+        </p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-            Total Employees
-          </h3>
-          <p className="text-3xl font-bold text-blue-600">0</p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            No employees added yet
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-            Drive Storage
-          </h3>
-          <p className="text-3xl font-bold text-green-600">0 MB</p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            No files uploaded yet
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-            User Role
-          </h3>
-          <p className="text-3xl font-bold text-purple-600 capitalize">
-            {user?.role || 'user'}
-          </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            Your access level
-          </p>
-        </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <Card key={stat.name}>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{stat.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stat.value}</div>
+              <p className="text-xs text-muted-foreground">{stat.description}</p>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
-      {/* Recent Activity */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-          Recent Activity
-        </h3>
-        <p className="text-gray-500 dark:text-gray-400">
-          No recent activity to display
-        </p>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {/* Quick Actions */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Quick Actions</CardTitle>
+            <CardDescription>Frequently used operations</CardDescription>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {quickActions.map((action) => (
+              <Button
+                key={action.title}
+                asChild
+                variant="outline"
+                className="h-auto p-4 flex flex-col items-center justify-center space-y-2"
+              >
+                <Link href={action.href}>
+                  <span className="text-2xl">{action.icon}</span>
+                  <div className="text-center">
+                    <div className="font-medium">{action.title}</div>
+                    <div className="text-xs text-muted-foreground">{action.description}</div>
+                  </div>
+                </Link>
+              </Button>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Recent Activity */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Activity</CardTitle>
+            <CardDescription>Latest system events</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {recentActivity.map((activity) => (
+                <div key={activity.id} className="flex items-start space-x-4">
+                  <div className={`rounded-full p-2 ${
+                    activity.type === 'authentication' ? 'bg-green-100' : 'bg-blue-100'
+                  }`}>
+                    {activity.type === 'authentication' ? '🔒' : '⚙️'}
+                  </div>
+                  <div className="flex-1 space-y-1">
+                    <p className="text-sm font-medium">{activity.action}</p>
+                    <p className="text-xs text-muted-foreground">{activity.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
+
+      {/* System Status */}
+      <Card>
+        <CardHeader>
+          <CardTitle>System Status</CardTitle>
+          <CardDescription>Google Workspace integration status</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="text-sm">Admin SDK</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="text-sm">Drive API</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="text-sm">Calendar API</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="text-sm">Gmail API</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
