@@ -1,0 +1,23 @@
+1:"$Sreact.fragment"
+2:I[7587,["6489","static/chunks/6489-f81464df689afa18.js","7177","static/chunks/app/layout-3c6393aac413714a.js"],"SessionProvider"]
+3:I[9766,[],""]
+4:I[960,["8039","static/chunks/app/error-b3be925898c3a8ac.js"],"default"]
+5:I[8924,[],""]
+6:I[9193,["6489","static/chunks/6489-f81464df689afa18.js","9305","static/chunks/app/(dashboard)/layout-be488808ed6ee348.js"],"ProtectedRoute"]
+7:I[1959,[],"ClientPageRoot"]
+8:I[1654,["5707","static/chunks/5707-9ee34ccaf8b18ad5.js","1262","static/chunks/1262-ca69480cb229c798.js","1670","static/chunks/app/(dashboard)/settings/page-44c91157a3ce41ba.js"],"default"]
+b:I[4431,[],"OutletBoundary"]
+d:I[5278,[],"AsyncMetadataOutlet"]
+f:I[4431,[],"ViewportBoundary"]
+11:I[4431,[],"MetadataBoundary"]
+12:"$Sreact.suspense"
+14:I[7150,[],""]
+:HL["/_next/static/css/f18652c914fd3f88.css","style"]
+0:{"P":null,"b":"wIiHH7V0v_JKDDJp_MO_z","p":"","c":["","settings"],"i":false,"f":[[["",{"children":["(dashboard)",{"children":["settings",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f18652c914fd3f88.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"h-full","children":["$","body",null,{"className":"__className_f367f3 h-full","children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"children":"not-found"}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":["(dashboard)",["$","$1","c",{"children":[null,["$","$L6",null,{"children":["$","div",null,{"className":"flex h-screen bg-gray-50 dark:bg-gray-900","children":[["$","aside",null,{"className":"w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 shadow-sm","children":[["$","div",null,{"className":"p-6","children":["$","h1",null,{"className":"text-xl font-bold text-gray-900 dark:text-white","children":"Brinkly Dashboard"}]}],["$","nav",null,{"className":"mt-6","children":[["$","div",null,{"className":"px-6 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider","children":"Main"}],["$","a",null,{"href":"/dashboard","className":"block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700","children":"Dashboard"}],["$","a",null,{"href":"/dashboard/employees","className":"block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700","children":"Employees"}],["$","a",null,{"href":"/dashboard/shared-drive","className":"block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700","children":"Shared Drive"}]]}]]}],["$","main",null,{"className":"flex-1 overflow-auto","children":["$","div",null,{"className":"p-6","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]}]]}],{"children":["settings",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","searchParams":{},"params":{},"promises":["$@9","$@a"]}],null,["$","$Lb",null,{"children":["$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lf",null,{"children":"$L10"}],null],["$","$L11",null,{"children":["$","div",null,{"hidden":true,"children":["$","$12",null,{"fallback":null,"children":"$L13"}]}]}]]}],false]],"m":"$undefined","G":["$14",[]],"s":false,"S":true}
+9:{}
+a:"$0:f:0:1:2:children:2:children:2:children:1:props:children:0:props:params"
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+c:null
+15:I[622,[],"IconMark"]
+e:{"metadata":[["$","title","0",{"children":"Blinkle Dashboard"}],["$","meta","1",{"name":"description","content":"Employee Management Dashboard"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L15","3",{}]],"error":null,"digest":"$undefined"}
+13:"$e:metadata"
