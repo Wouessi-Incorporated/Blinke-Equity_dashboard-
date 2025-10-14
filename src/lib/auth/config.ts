@@ -27,14 +27,14 @@ export const authOptions: NextAuthOptions = {
   },
   
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({  }) {
       // You can add custom sign-in logic here
       // For example, restrict to certain email domains:
       // if (user.email?.endsWith('@yourcompany.com')) return true;
       return true;
     },
     
-    async jwt({ token, account, user, profile }) {
+    async jwt({ token, account, user }) {
       // Persist OAuth access_token to the token
       if (account) {
         token.accessToken = account.access_token;
