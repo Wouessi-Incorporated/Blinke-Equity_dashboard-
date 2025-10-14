@@ -1,8 +1,6 @@
 import { SessionProvider } from "@/components/features/auth/SessionProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-expect-error
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

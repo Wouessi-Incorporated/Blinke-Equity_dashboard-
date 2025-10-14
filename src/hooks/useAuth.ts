@@ -1,10 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export function useAuth() {
   const { data: session, status, update } = useSession();
-  const router = useRouter();
 
   const signInWithGoogle = (callbackUrl: string = "/dashboard") => {
     return signIn("google", { callbackUrl });
