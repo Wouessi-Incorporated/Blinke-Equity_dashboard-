@@ -43,7 +43,7 @@ export default function DelegateAssistantPage() {
     <div className="space-y-6">
       <div className="flex items-center space-x-2">
         <Button variant="outline" asChild>
-          <Link href={`/dashboard/employees/${employeeId}`}>
+          <Link href={`/employees/${employeeId}`}>
             ← Back to Employee
           </Link>
         </Button>

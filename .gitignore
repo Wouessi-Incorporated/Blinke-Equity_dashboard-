@@ -14,7 +14,10 @@
 
 # next.js
 
+.next
+/node_modules
 
+# misc
 # production
 
 # misc

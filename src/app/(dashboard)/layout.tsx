@@ -1,4 +1,5 @@
 import { ProtectedRoute } from "@/components/features/auth/ProtectedRoute";
+import Link from "next/link";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -19,15 +20,15 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <div className="px-6 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">
               Main
             </div>
-            <a href="/dashboard" className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <Link href="/dashboard" className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
               Dashboard
-            </a>
-            <a href="/dashboard/employees" className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+            </Link>
+            <Link href="/employees" className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
               Employees
-            </a>
-            <a href="/dashboard/shared-drive" className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+            </Link>
+            <Link href="/shared-drive" className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
               Shared Drive
-            </a>
+            </Link>
           </nav>
         </aside>
         

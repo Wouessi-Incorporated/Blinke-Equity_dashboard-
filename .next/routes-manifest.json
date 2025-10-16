@@ -152,6 +152,12 @@
       "namedRegex": "^/audit\\.logs(?:/)?$"
     },
     {
+      "page": "/dashboard",
+      "regex": "^/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard(?:/)?$"
+    },
+    {
       "page": "/employees",
       "regex": "^/employees(?:/)?$",
       "routeKeys": {},
