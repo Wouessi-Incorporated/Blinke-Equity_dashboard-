@@ -16,6 +16,8 @@
 .next/
 /out/
 
+/node_modules
+.qode
 # misc
 # production
 .DS_Store
@@ -38,5 +40,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
 next-env.d.ts
 Task.md
