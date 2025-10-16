@@ -39,7 +39,7 @@ export default function EmployeesPage() {
           <p className="text-muted-foreground">Manage your team members and their access</p>
         </div>
         <Button asChild>
-          <Link href="/dashboard/employees/add">
+          <Link href="/employees/add">
             Add Employee
           </Link>
         </Button>
@@ -103,17 +103,17 @@ export default function EmployeesPage() {
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                          <Link href={`/dashboard/employees/${employee.id}/edit`}>
+                          <Link href={`/employees/${employee.id}/edit`}>
                             Edit
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                          <Link href={`/dashboard/employees/${employee.id}/suspend`}>
+                          <Link href={`/employees/${employee.id}/suspend`}>
                             Suspend
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                          <Link href={`/dashboard/employees/${employee.id}/delegate`}>
+                          <Link href={`/employees/${employee.id}/delegate`}>
                             Assign Assistant
                           </Link>
                         </DropdownMenuItem>

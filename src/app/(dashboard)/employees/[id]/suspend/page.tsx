@@ -26,7 +26,7 @@ export default function SuspendEmployeePage() {
     <div className="space-y-6">
       <div className="flex items-center space-x-2">
         <Button variant="outline" asChild>
-          <Link href={`/dashboard/employees/${employeeId}`}>
+          <Link href={`/employees/${employeeId}`}>
             ← Back to Employee
           </Link>
         </Button>
@@ -88,7 +88,7 @@ export default function SuspendEmployeePage() {
               Confirm Suspend
             </Button>
             <Button variant="outline" asChild>
-              <Link href={`/dashboard/employees/${employeeId}`}>
+              <Link href={`/employees/${employeeId}`}>
                 Cancel
               </Link>
             </Button>

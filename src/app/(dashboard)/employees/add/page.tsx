@@ -34,7 +34,7 @@ export default function AddEmployeePage() {
     <div className="space-y-6">
       <div className="flex items-center space-x-2">
         <Button variant="outline" asChild>
-          <Link href="/dashboard/employees">
+          <Link href="/employees">
             ← Back to Employees
           </Link>
         </Button>
@@ -151,7 +151,7 @@ export default function AddEmployeePage() {
             <div className="flex space-x-4">
               <Button type="submit">Create Employee</Button>
               <Button type="button" variant="outline" asChild>
-                <Link href="/dashboard/employees">
+                <Link href="/employees">
                   Cancel
                 </Link>
               </Button>

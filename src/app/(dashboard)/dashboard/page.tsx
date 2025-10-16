@@ -19,25 +19,25 @@ export default function Dashboard() {
     {
       title: 'Add Employee',
       description: 'Onboard new team member',
-      href: '/dashboard/employees/add',
+      href: '/employees/add',
       icon: '👤',
     },
     {
       title: 'Manage Team',
       description: 'View all employees',
-      href: '/dashboard/employees',
+      href: '/employees',
       icon: '👥',
     },
     {
       title: 'Upload Files',
       description: 'Share documents with team',
-      href: '/dashboard/shared-drive/upload',
+      href: '/shared-drive/upload',
       icon: '📁',
     },
     {
       title: 'Browse Drive',
       description: 'Access shared files',
-      href: '/dashboard/shared-drive',
+      href: '/shared-drive',
       icon: '🔍',
     },
   ];
