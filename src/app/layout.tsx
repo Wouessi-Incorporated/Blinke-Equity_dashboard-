@@ -1,12 +1,11 @@
 import { SessionProvider } from "@/components/features/auth/SessionProvider";
+import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Blinkle Dashboard",
+  title: "Brinkly Dashboard",
   description: "Employee Management Dashboard",
 };
 
@@ -17,10 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full`}>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+      <body className="h-full">
+        <ReactQueryProvider>
+          <SessionProvider>
+            {/* <SessionErrorBoundary> */}
+            {/* <ForceLogout /> */}
+            {children}
+            {/* </SessionErrorBoundary> */}
+          </SessionProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

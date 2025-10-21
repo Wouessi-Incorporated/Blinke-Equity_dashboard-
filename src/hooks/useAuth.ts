@@ -1,35 +1,46 @@
+'use client';
+
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export function useAuth() {
   const { data: session, status, update } = useSession();
+
+  // Safe session access
+  const safeSession = session || { user: null, accessToken: null, error: null };
+  const safeUser = safeSession.user || { id: null, role: null, name: null, email: null, image: null };
 
   const signInWithGoogle = (callbackUrl: string = "/dashboard") => {
     return signIn("google", { callbackUrl });
   };
 
   const signOutAndRedirect = (callbackUrl: string = "/") => {
+    // Clear storage before sign out
+    if (typeof window !== 'undefined') {
+      localStorage.clear();
+      sessionStorage.clear();
+    }
     return signOut({ callbackUrl });
   };
 
   return {
-    // Session data
-    user: session?.user,
-    session,
+    // Session data with safe defaults
+    user: safeUser,
+    session: safeSession,
     status,
-    
+
     // State helpers
-    isAuthenticated: !!session,
+    isAuthenticated: !!safeSession.user,
     isLoading: status === "loading",
-    hasError: !!session?.error,
-    
+    hasError: !!safeSession.error,
+
     // Auth methods
     signIn: signInWithGoogle,
     signOut: signOutAndRedirect,
     updateSession: update,
-    
-    // User info
-    userId: session?.user?.id,
-    userRole: session?.user?.role,
-    accessToken: session?.accessToken,
+
+    // User info with safe defaults
+    userId: safeUser.id || '',
+    userRole: safeUser.role || 'user',
+    accessToken: safeSession.accessToken || '',
   };
 }

@@ -17,30 +17,29 @@ export async function POST(
 
     const { id: employeeId } = await params;
     const userEmail = employeeId;
+    const { newEmail } = await request.json();
+
+    if (!newEmail) {
+      return NextResponse.json(
+        { error: 'New email is required' },
+        { status: 400 }
+      );
+    }
 
     const googleService = new GoogleWorkspaceService(session.accessToken);
-    await googleService.suspendUser(userEmail);
-
-    const sharedDriveId = process.env.SHARED_DRIVE_ID;
-    if (sharedDriveId) {
-      try {
-        await googleService.revokeDriveAccess(userEmail, sharedDriveId);
-      } catch (driveError) {
-        console.warn('Failed to revoke drive access:', driveError);
-      }
-    }
+    await googleService.addEmailAlias(userEmail, newEmail);
 
     return NextResponse.json({
       success: true,
-      message: 'Employee suspended successfully'
+      message: 'Email alias added successfully'
     });
 
   } catch (error: any) {
-    console.error('Error suspending employee:', error);
+    console.error('Error updating email:', error);
     return NextResponse.json(
       {
         success: false,
-        error: error.message || 'Failed to suspend employee'
+        error: error.message || 'Failed to update email'
       },
       { status: 500 }
     );
