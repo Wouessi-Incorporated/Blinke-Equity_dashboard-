@@ -2,7 +2,7 @@
 import { google } from 'googleapis';
 
 export class GoogleWorkspaceService {
-  private admin: any;
+  public admin: any;
   private drive: any;
   private calendar: any;
   private gmail: any;
@@ -50,8 +50,8 @@ export class GoogleWorkspaceService {
         domain: 'blinkequity.ca',
         maxResults: 1,
       });
-      return { 
-        success: true, 
+      return {
+        success: true,
         userCount: response.data.users?.length || 0,
         domain: response.data.users?.[0]?.primaryEmail?.split('@')[1]
       };
@@ -61,8 +61,8 @@ export class GoogleWorkspaceService {
         code: error.code,
         response: error.response?.data
       });
-      return { 
-        success: false, 
+      return {
+        success: false,
         error: error.message,
         code: error.code,
         details: error.response?.data
@@ -79,7 +79,7 @@ export class GoogleWorkspaceService {
         orderBy: 'familyName',
         maxResults: 100,
       });
-      
+
       console.log(`Found ${response.data.users?.length || 0} users`);
       return response.data;
     } catch (error: any) {

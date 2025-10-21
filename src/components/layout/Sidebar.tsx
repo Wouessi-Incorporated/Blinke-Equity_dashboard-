@@ -12,10 +12,7 @@ import {
     FileText,
     Settings,
     LogOut,
-    Bug,
-    Calendar,
-    Mail
-} from "lucide-react";
+    Bug} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navigationItems = [
@@ -129,7 +126,7 @@ export function Sidebar() {
                     <Avatar className="h-10 w-10">
                         <AvatarImage src={user?.image || ''} alt={user?.name || ''} />
                         <AvatarFallback className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
-                            {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
+                            {user?.name?.split(' ').map((n: string) => n[0]).join('').toUpperCase() || 'U'}
                         </AvatarFallback>
                     </Avatar>
                     <div className="flex-1 min-w-0">

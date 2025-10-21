@@ -56,6 +56,7 @@ export default function EditEmployeePage() {
       router.push(`/dashboard/employees/${employeeId}`);
     } catch (error) {
       // Error handling is done in the mutation
+      console.error(error)
     }
   };
 
@@ -70,6 +71,7 @@ export default function EditEmployeePage() {
       setNewEmail('');
     } catch (error) {
       // Error handling is done in the mutation
+      console.error(error)
     }
   };
 

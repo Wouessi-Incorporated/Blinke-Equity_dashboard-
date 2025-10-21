@@ -6,16 +6,16 @@ import { GoogleWorkspaceService } from '@/lib/google-workspace';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
-    
+
     if (!session?.accessToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const employeeId = params.id;
+    const { id: employeeId } = await params;
     const userEmail = employeeId;
     const { newEmail } = await request.json();
 
@@ -29,17 +29,17 @@ export async function POST(
     const googleService = new GoogleWorkspaceService(session.accessToken);
     await googleService.addEmailAlias(userEmail, newEmail);
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Email alias added successfully' 
+    return NextResponse.json({
+      success: true,
+      message: 'Email alias added successfully'
     });
 
   } catch (error: any) {
     console.error('Error updating email:', error);
     return NextResponse.json(
-      { 
+      {
         success: false,
-        error: error.message || 'Failed to update email' 
+        error: error.message || 'Failed to update email'
       },
       { status: 500 }
     );

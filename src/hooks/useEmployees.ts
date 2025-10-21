@@ -62,6 +62,30 @@ export const useSuspendEmployee = () => {
   });
 };
 
+export const useUpdateEmployee = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, data }: { id: string; data: any }) => {
+      const response = await fetch(`/api/employees/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      if (!result.success) throw new Error(result.error);
+      return result.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['employees'] });
+      toast.success('Success', { description: 'Employee updated successfully' });
+    },
+    onError: (error: Error) => {
+      toast.error('Error', { description: error.message });
+    },
+  });
+};
+
 export const useUpdateEmail = () => {
   const queryClient = useQueryClient();
 

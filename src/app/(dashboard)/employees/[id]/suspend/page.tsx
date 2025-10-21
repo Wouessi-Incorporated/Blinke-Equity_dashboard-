@@ -24,6 +24,7 @@ export default function SuspendEmployeePage() {
       router.push('/dashboard/employees');
     } catch (error) {
       // Error handling is done in the mutation
+      console.error(error)
     }
   };
 

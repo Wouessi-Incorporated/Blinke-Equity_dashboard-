@@ -1,10 +1,8 @@
 import { SessionProvider } from "@/components/features/auth/SessionProvider";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import type { Metadata } from "next";
-import ForceLogout from "@/components/ForceLogout";
 
 import './globals.css'
-import SessionErrorBoundary from "@/components/features/auth/SessionErrorBoundary";
 
 export const metadata: Metadata = {
   title: "Brinkly Dashboard",

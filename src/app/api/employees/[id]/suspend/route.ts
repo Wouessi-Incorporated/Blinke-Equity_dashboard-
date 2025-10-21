@@ -6,16 +6,16 @@ import { GoogleWorkspaceService } from '@/lib/google-workspace';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
-    
+
     if (!session?.accessToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const employeeId = params.id;
+    const { id: employeeId } = await params;
     const userEmail = employeeId;
 
     const googleService = new GoogleWorkspaceService(session.accessToken);
@@ -30,17 +30,17 @@ export async function POST(
       }
     }
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Employee suspended successfully' 
+    return NextResponse.json({
+      success: true,
+      message: 'Employee suspended successfully'
     });
 
   } catch (error: any) {
     console.error('Error suspending employee:', error);
     return NextResponse.json(
-      { 
+      {
         success: false,
-        error: error.message || 'Failed to suspend employee' 
+        error: error.message || 'Failed to suspend employee'
       },
       { status: 500 }
     );

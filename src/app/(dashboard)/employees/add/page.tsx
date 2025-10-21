@@ -51,6 +51,7 @@ export default function AddEmployeePage() {
       router.push('/employees');
     } catch (error) {
       // Error handling is done in the mutation
+      console.error(error)
     }
   };
 
