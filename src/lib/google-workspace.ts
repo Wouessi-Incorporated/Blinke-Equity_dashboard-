@@ -8,16 +8,90 @@ export class GoogleWorkspaceService {
   private gmail: any;
 
   constructor(accessToken: string) {
-    const auth = new google.auth.OAuth2();
-    auth.setCredentials({ access_token: accessToken });
+    if (!accessToken) {
+      throw new Error('Access token is required');
+    }
 
-    this.admin = google.admin({ version: 'directory_v1', auth });
-    this.drive = google.drive({ version: 'v3', auth });
-    this.calendar = google.calendar({ version: 'v3', auth });
-    this.gmail = google.gmail({ version: 'v1', auth });
+    try {
+      const auth = new google.auth.OAuth2();
+      auth.setCredentials({
+        access_token: accessToken,
+      });
+
+      this.admin = google.admin({
+        version: 'directory_v1',
+        auth: auth,
+      });
+
+      this.drive = google.drive({
+        version: 'v3',
+        auth: auth,
+      });
+
+      this.calendar = google.calendar({
+        version: 'v3',
+        auth: auth,
+      });
+
+      this.gmail = google.gmail({
+        version: 'v1',
+        auth: auth,
+      });
+    } catch (error) {
+      console.error('Error initializing Google Workspace service:', error);
+      throw error;
+    }
+  }
+
+  // Test authentication
+  async testAuthentication() {
+    try {
+      const response = await this.admin.users.list({
+        domain: 'blinkequity.ca',
+        maxResults: 1,
+      });
+      return { 
+        success: true, 
+        userCount: response.data.users?.length || 0,
+        domain: response.data.users?.[0]?.primaryEmail?.split('@')[1]
+      };
+    } catch (error: any) {
+      console.error('Authentication test failed:', {
+        message: error.message,
+        code: error.code,
+        response: error.response?.data
+      });
+      return { 
+        success: false, 
+        error: error.message,
+        code: error.code,
+        details: error.response?.data
+      };
+    }
   }
 
   // USER MANAGEMENT
+  async listUsers(domain: string = 'blinkequity.ca') {
+    try {
+      console.log('Fetching users from domain:', domain);
+      const response = await this.admin.users.list({
+        domain,
+        orderBy: 'familyName',
+        maxResults: 100,
+      });
+      
+      console.log(`Found ${response.data.users?.length || 0} users`);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error in listUsers:', {
+        message: error.message,
+        code: error.code,
+        response: error.response?.data
+      });
+      throw error;
+    }
+  }
+
   async createUser(userData: {
     primaryEmail: string;
     password: string;
@@ -68,14 +142,6 @@ export class GoogleWorkspaceService {
       userKey: userEmail,
       requestBody: { alias }
     });
-  }
-
-  async listUsers(domain: string = 'blinkequity.ca') {
-    const response = await this.admin.users.list({ 
-      domain,
-      orderBy: 'familyName'
-    });
-    return response.data;
   }
 
   async getUser(userEmail: string) {
